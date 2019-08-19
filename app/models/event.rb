@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
-	belongs_to :user
+	belongs_to :admin, class_name: "User", foreign_key: "admin_id" 
 	has_many :attendances
-	has_many :users, through: :attendances
+	has_many :participants, class_name: "User", foreign_key: "participants_id",through: :attendances
+
 	validates	:start_date, 
 		presence: true, 
 		inclusion: { in: (DateTime.now..Date.today+100.years) }
