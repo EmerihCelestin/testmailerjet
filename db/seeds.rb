@@ -10,24 +10,15 @@
 #  end
 
 user = User.first(10)
-user_id =[]
-user.each	do |user| 
-user << user
-end
+
 
 10.times do 
 	event = Event.create(start_date: Faker::Date.between(from: DateTime.now, to: Date.today+rand(1..50).day), duration: rand(60..320).minute.to_i ,title: Faker::Book.title, description: Faker::TvShows::GameOfThrones.quote, price: rand(1..1000), location: Faker::WorldCup.stadium , admin: user[rand(0..user.length)])
 end	
 user = User.last(10)
-user =[]
-user.each	do |user| 
-user << user.id
-end
+
 event = Event.all
-event =[]
-event.each	do |event| 
-event << event
-end
+
 
 50.times do 
 	attendance = Attendance.create(stripe_customer_id: Faker::Stripe.valid_card, participant_id: user[rand(0..user.length)] , event: event[rand(0..eventlength)] )
