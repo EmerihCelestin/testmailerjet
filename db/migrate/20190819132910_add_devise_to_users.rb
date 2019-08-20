@@ -42,6 +42,34 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.2]
   end
 
   def self.down
+    def change
+      create_table :events do |t|
+        t.datetime :start_date
+        t.integer :duration
+        t.string :title
+        t.text :description
+        t.integer :price
+        t.string :location
+        t.belongs_to :admin, index: true
+       
+        
+
+        t.timestamps
+      end
+      create_table :events do |t|
+        t.datetime :start_date
+        t.integer :duration
+        t.string :title
+        t.text :description
+        t.integer :price
+        t.string :location
+        t.belongs_to :admin, index: true
+       
+        
+
+        t.timestamps
+      end
+    end
     # By default, we don't want to make any assumption about how to roll back a migration when your
     # model already existed. Please edit below which fields you would like to remove in this migration.
     raise ActiveRecord::IrreversibleMigration
