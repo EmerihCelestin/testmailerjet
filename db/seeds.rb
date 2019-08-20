@@ -21,5 +21,5 @@ event = Event.all
 
 
 50.times do 
-	attendance = Attendance.create(stripe_customer_id: Faker::Stripe.valid_card, participant_id: user[rand(0..user.length)] , event: event[rand(0..eventlength)] )
+	attendance = Attendance.create(stripe_customer_id: Faker::Stripe.valid_card, participant_id: user[rand(0..user.length)] , event: event[rand(0..event.length)] )
 end	
