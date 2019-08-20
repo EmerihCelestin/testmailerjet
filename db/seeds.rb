@@ -27,7 +27,7 @@ event = Event.all
 event =[]
 event.each	do |event| 
 event << event
-
+end
 
 50.times do 
 	attendance = Attendance.create(stripe_customer_id: Faker::Stripe.valid_card, participant_id: user[rand(0..user.length)] , event: event[rand(0..eventlength)] )
