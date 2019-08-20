@@ -1,0 +1,28 @@
+<main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <center>
+      <div class="jumbotron" style="width: 60rem ; height: 25rem ;background-image: url(https://colormylife.fr/wp-content/uploads/2017/11/Organiser-un-e%CC%81ve%CC%81nement-10-e%CC%81tapes-pour-vous-guider-vers-le-succe%CC%80s-1080x500.jpg);" >
+        <img src="">
+        <div class="container">
+          <h1 class="display-3">Hello, welcome EventBrite EA</h1>
+          <p>You can create events and also participate in events.</p>
+          <p><a class="btn btn-primary btn-lg" href="/events/new" role="button">Create your event »</a></p>
+        </div>
+      </div>
+      </center>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+        <% @event.each do |event|%>
+          <div class="col-md-4">
+            <h2><%= event.title  %></h2>
+            <p><%= event.description %></p>
+            <p><a class="btn btn-secondary" href="/events/show" role="button">View details »</a></p>
+          </div>
+       <% end %> 
+        </div>
+        <hr>
+
+      </div> <!-- /container -->
