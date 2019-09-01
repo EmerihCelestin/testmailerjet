@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   include UsersHelper
   before_action :authenticate_user!
-  before_action :profil, only: [:show]
+  before_action :profil, only: [:destroy]
   
   def index
   end
 
   def show
+     @user = current_user
   end
 
   def new
@@ -23,9 +24,11 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
   private
     def profil
-      unless current_user == user
+      @user = User.find(params[:id])
+      unless current_user == @user
         redirect_to events_path
       end
     end 

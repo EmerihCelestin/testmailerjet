@@ -1,2 +1,20 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="card text-white mb-3 " style="max-width: 540px;background-image: url(https://www.webdesignerdepot.com/cdn-origin/uploads/2014/05/featured.jpg)">
+	<div class="row no-gutters">
+		<div class="col-md-4">
+			<img src="https://vignette.wikia.nocookie.net/fbc/images/6/6b/Lejeune.jpg/revision/latest?cb=20170102230849&path-prefix=fr" class="card-img" alt="...">
+		</div>
+		<div class="col-md-8">
+			<div class="card-body">
+				<h5 class="card-title"><%= @user.first_name%> <%= @user.last_name%></h5>
+				<p class="card-text"> email: <%= @user.email%></p>
+				<p class="card-text"> description: <%= @user.description%></p>
+				<p class="card-text"> événements créer: </p>
+				<div class="btn-group btn-group-toggle">
+					<%@user.events_admin.each do |event|%>
+					<a href="/events/<%= event.id%>"class="btn btn-secondary btn-group-sm"><%= event.title%></a>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

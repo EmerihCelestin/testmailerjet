@@ -4,23 +4,34 @@ class Event < ApplicationRecord
 	has_many :participants, class_name: "User", foreign_key: "participants_id",through: :attendances
 
 	validates	:start_date, 
-		presence: true, 
-		inclusion: { in: (DateTime.now..Date.today+100.years) }
+		presence: true, if: :start_date? 
 	
 
 	validates :duration,
-		presence: true
-
-		validate :validate_duration?
-
-
-		def validate_duration?
-			if duration > 0 && duration % 5 == 0
-				return true
+		presence: true, if: :validate_duration?
+	
+		def start_date?
+			if start_date !=nil
+				if start_date > Time.now
+					true
+				else
+					errors.add(:start_date, "Ton event doit être dans le futur!")	
+				end
 			else
-				errors.add(:duration, "La durée doit être suprieur à 0 et multiple de 5 ")
-				return false
-			end		
+				errors.add(:start_date)
+			end	
+		end
+		def validate_duration?
+			if duration !=nil
+				if duration > 0 && duration % 5 == 0
+					return true
+				else
+					errors.add(:duration, "La durée doit être suprieur à 0 et multiple de 5 ")
+					return false
+				end
+			else
+				errors.add(:duration)	
+			end			
 		end	
 
 	validates :title,
