@@ -1,5 +1,6 @@
 class UserMailer < ApplicationMailer
-	def def welcome_email(user)
+	
+	 def welcome_email(user)
 
 		@user = user
      courrier(
